@@ -1,0 +1,16 @@
+diff --git a/ckeditor.config.js b/ckeditor.config.js
+index 01def49..2f866d5 100644
+--- a/ckeditor.config.js
++++ b/ckeditor.config.js
+@@ -8,6 +8,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
+  If you don't do this, you may notice that browser is ignoring all your changes.
+  */
+ CKEDITOR.editorConfig = function(config) {
++
++  // Disable Advanced Content Filter
++  // http://docs.ckeditor.com/#!/guide/dev_advanced_content_filter
++  config.allowedContent = true;
++
+   config.indentClasses = [ 'rteindent1', 'rteindent2', 'rteindent3', 'rteindent4' ];
+ 
+   // [ Left, Center, Right, Justified ]

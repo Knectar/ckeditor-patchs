@@ -1,0 +1,25 @@
+diff --git a/ckeditor.config.js b/ckeditor.config.js
+index 2f866d5..6321ad5 100644
+--- a/ckeditor.config.js
++++ b/ckeditor.config.js
+@@ -3,6 +3,20 @@ Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+ For licensing, see LICENSE.html or http://ckeditor.com/license
+ */
+ 
++/**
++ * Fix:
++ * In Chrome SPAN tags appear when merging paragraphs with delete/backspace.
++ * https://dev.ckeditor.com/ticket/9998#comment:52
++ */
++(function() {
++	var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
++	if (isChrome) {
++		CKEDITOR.on( 'instanceLoaded', function( e ){
++			this.addCss('.cke_editable { line-height: normal; }');
++		});
++	}
++})();
++
+ /*
+  WARNING: clear browser's cache after you modify this file.
+  If you don't do this, you may notice that browser is ignoring all your changes.
